@@ -29,7 +29,7 @@ rtp:prepend(lazypath)
 require('lazy').setup({
   { import = 'plugins.lsp' },
   { import = 'plugins.utils' },
-  { import = 'plugins.styling.tokyonight' }, -- colorscheme
+  { import = 'plugins.styling.tokyonight' },
 }, { ---@diagnostic disable-line: missing-fields
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the

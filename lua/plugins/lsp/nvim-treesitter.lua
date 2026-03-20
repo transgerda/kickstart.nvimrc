@@ -3,6 +3,10 @@ return { -- Highlight, edit, and navigate code
   lazy = false,
   build = ':TSUpdate',
   branch = 'main',
+  ensure_installed = {
+    'php',
+    'html',
+  },
   -- [[ Configure Treesitter ]] See `:help nvim-treesitter-intro`
   config = function()
     local parsers = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' }

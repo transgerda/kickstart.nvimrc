@@ -8,9 +8,6 @@ vim.o.mouse = 'a'
 
 vim.o.showmode = false
 
--- NOTE: synced clipboard
-vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
-
 vim.o.breakindent = true
 vim.o.undofile = true
 
@@ -35,3 +32,9 @@ vim.o.cursorline = true
 vim.o.scrolloff = 10
 
 vim.o.confirm = true
+
+-- Use spaces instead of tab characters
+vim.o.expandtab = true
+vim.o.shiftwidth = 4
+vim.o.tabstop = 4
+vim.o.softtabstop = 4

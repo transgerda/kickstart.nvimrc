@@ -17,5 +17,21 @@ keymap('n', '<leader>Q', '<cmd>q!<CR>', { desc = 'hard quit' })
 
 vim.cmd [[map H ^]]
 vim.cmd [[map L $]]
+vim.cmd [[map K k]]
+vim.cmd [[map J j]]
 
 vim.api.nvim_set_keymap('n', '<leader>=', "<cmd>lua require('fzf-lua').files()<CR>", { noremap = true, silent = true })
+
+-- commenting
+vim.keymap.set('n', '<C-c>', function() require('Comment.api').toggle.linewise.current() end, { desc = 'Toggle comment (line)' })
+
+-- Toggle comment for visual selection
+vim.keymap.set('v', '<C-c>', function()
+  local esc = vim.api.nvim_replace_termcodes('<ESC>', true, false, true)
+  vim.api.nvim_feedkeys(esc, 'nx', false)
+  require('Comment.api').toggle.linewise(vim.fn.visualmode())
+end, { desc = 'Toggle comment (visual)' })
+
+-- Copy to system clipboard
+keymap('v', '<leader>y', '"+y')
+keymap('n', '<leader>y', '"+yy')

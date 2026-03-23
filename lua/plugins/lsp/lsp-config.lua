@@ -127,9 +127,17 @@ return {
       -- But for many setups, the LSP (`ts_ls`) will work just fine
       -- ts_ls = {},
 
-      stylua = {}, -- Used to format Lua code
+      -- php
+      intelephense = {},
+      laravel_ls = {},
+
+      -- html, css, json, yaml, etc.
+      -- biome = {},
 
       -- Special Lua Config, as recommended by neovim help docs
+      -- lua
+      stylua = {},
+
       lua_ls = {
         on_init = function(client)
           if client.workspace_folders then

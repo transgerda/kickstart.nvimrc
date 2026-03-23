@@ -8,8 +8,8 @@ return { -- Autocompletion
       'github/copilot.vim',
       event = 'VimEnter',
       config = function()
-        -- vim.g.copilot_no_tab_map = true -- We'll map manually
-        -- vim.api.nvim_set_keymap('i', '<C-K>', 'copilot#Accept("<CR>")', { silent = true, expr = true })
+        vim.g.copilot_no_tab_map = true -- We'll map manually
+        vim.api.nvim_set_keymap('i', '<C-S-K>', 'copilot#Accept("<CR>")', { silent = true, expr = true })
       end,
     },
     {

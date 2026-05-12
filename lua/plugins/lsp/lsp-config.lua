@@ -33,9 +33,9 @@ return {
 
         map('<leader>c', vim.lsp.buf.rename, '[R]e[n]ame')
 
-        map('gra', vim.lsp.buf.code_action, '[G]oto Code [A]ction', { 'n', 'x' })
+        map('ga', vim.lsp.buf.code_action, '[G]oto Code [A]ction', { 'n', 'x' })
 
-        map('grD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+        map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
         local client = vim.lsp.get_client_by_id(event.data.client_id)
         if client and client:supports_method('textDocument/documentHighlight', event.buf) then
@@ -90,6 +90,10 @@ return {
 
       -- html, css, json, yaml, etc.
       biome = {},
+      tailwindcss = {},
+      superhtml = {},
+      ts_ls = {},
+      -- vue_ls = {},
 
       -- Special Lua Config, as recommended by neovim help docs
       -- lua

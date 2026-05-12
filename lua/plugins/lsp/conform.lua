@@ -35,6 +35,7 @@ return {
       javascript = { 'biome' },
       json = { 'biome' },
       css = { 'biome' },
+      vue = { 'blade-formatter' },
     },
   },
 }

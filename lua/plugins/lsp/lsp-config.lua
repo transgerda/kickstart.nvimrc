@@ -91,9 +91,16 @@ return {
       -- html, css, json, yaml, etc.
       biome = {},
       tailwindcss = {},
-      superhtml = {},
-      ts_ls = {},
-      -- vue_ls = {},
+      superhtml = {
+        filetypes = { 'html', 'vue', 'blade' },
+      },
+      ts_ls = {
+        filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'vue' },
+      },
+
+      -- acitvate html css and js in vue files
+      vue_ls = {},
+      -- volar = {},
 
       -- Special Lua Config, as recommended by neovim help docs
       -- lua

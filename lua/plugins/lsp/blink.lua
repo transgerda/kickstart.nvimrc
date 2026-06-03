@@ -3,12 +3,11 @@ return { -- Autocompletion
   event = 'VimEnter',
   version = '1.*',
   dependencies = {
-    -- 'github/copilot.vim',
     {
       'github/copilot.vim',
       event = 'VimEnter',
       config = function()
-        vim.g.copilot_no_tab_map = true -- We'll map manually
+        vim.g.copilot_no_tab_map = true
         vim.api.nvim_set_keymap('i', '<C-S-K>', 'copilot#Accept("<CR>")', { silent = true, expr = true })
       end,
     },
@@ -20,7 +19,6 @@ return { -- Autocompletion
         return 'make install_jsregexp'
       end)(),
       dependencies = {
-        -- https://github.com/rafamadriz/friendly-snippets
         {
           'rafamadriz/friendly-snippets',
           config = function() require('luasnip.loaders.from_vscode').lazy_load() end,
@@ -36,25 +34,59 @@ return { -- Autocompletion
       preset = 'default',
       ['<Tab>'] = { 'accept', 'fallback' },
     },
-
     appearance = {
       nerd_font_variant = 'mono',
     },
-
     completion = {
-      documentation = { auto_show = false },
+      documentation = {
+        auto_show = true,
+        auto_show_delay_ms = 200,
+      },
     },
-
     sources = {
-      default = { 'lsp', 'path', 'snippets' },
+      default = { 'lsp', 'path', 'snippets', 'buffer' },
+      providers = {
+        path = {
+          opts = {
+            show_hidden_files_by_default = true,
+            get_cwd = function(_) return vim.fn.getcwd() end,
+          },
+        },
+      },
     },
-
     snippets = { preset = 'luasnip' },
-
-    -- See :h blink-cmp-config-fuzzy for more information
     fuzzy = { implementation = 'lua' },
-
-    -- Shows a signature help window while you type arguments for a function
-    signature = { enabled = true },
+    signature = {
+      enabled = true,
+      trigger = {
+        enabled = true,
+        show_on_insert = true, -- show as soon as you open the parenthesis
+        show_on_trigger_character = true,
+      },
+      window = {
+        show_documentation = true,
+        border = 'rounded', -- optional, makes it visually distinct
+      },
+    },
   },
+  config = function(_, opts)
+    local blink = require 'blink.cmp'
+    blink.setup(opts)
+
+    -- Advertise blink capabilities to all active LSP servers
+    -- This ensures rich completions (inherited members, etc.) are returned
+    local capabilities = blink.get_lsp_capabilities()
+    for _, client in ipairs(vim.lsp.get_clients()) do
+      client.config.capabilities = vim.tbl_deep_extend('force', client.config.capabilities or {}, capabilities)
+    end
+
+    -- Also hook into LspAttach so any servers that start later also get capabilities
+    vim.api.nvim_create_autocmd('LspAttach', {
+      group = vim.api.nvim_create_augroup('blink-lsp-capabilities', { clear = true }),
+      callback = function(event)
+        local client = vim.lsp.get_client_by_id(event.data.client_id)
+        if client then client.config.capabilities = vim.tbl_deep_extend('force', client.config.capabilities or {}, capabilities) end
+      end,
+    })
+  end,
 }

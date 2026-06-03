@@ -70,36 +70,26 @@ return {
     ---@type table<string, vim.lsp.Config>
     local servers = {
       -- php
-      intelephense = {
-        settings = {
-          intelephense = {
-            diagnostics = {
-              enable = false,
-              undefinedFunctions = false,
-              undefinedProperties = false,
-              undefinedConstants = false,
-              undefinedClasses = false,
-            },
-            files = {
-              exclude = { '**/vendor/**', '**/node_modules/**' },
-            },
-          },
-        },
+      -- intelephense = {},
+      phpactor = {
+        root_markers = { 'artisan', 'composer.json', 'laracord' },
       },
-      laravel_ls = {},
+      laravel_ls = {
+        root_markers = { 'artisan', 'composer.json', 'laracord' },
+      },
 
       -- html, css, json, yaml, etc.
-      biome = {},
-      tailwindcss = {},
-      superhtml = {
-        filetypes = { 'html', 'vue', 'blade' },
-      },
-      ts_ls = {
-        -- filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'vue' },
-      },
+      -- biome = {},
+      -- tailwindcss = {},
+      -- superhtml = {
+      --   filetypes = { 'html', 'vue', 'blade' },
+      -- },
+      -- ts_ls = {
+      -- filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'vue' },
+      -- },
 
       -- acitvate html css and js in vue files
-      vue_ls = {},
+      -- vue_ls = {},
       -- volar = {},
 
       -- Special Lua Config, as recommended by neovim help docs

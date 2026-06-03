@@ -95,7 +95,7 @@ return {
         filetypes = { 'html', 'vue', 'blade' },
       },
       ts_ls = {
-        filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'vue' },
+        -- filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'vue' },
       },
 
       -- acitvate html css and js in vue files

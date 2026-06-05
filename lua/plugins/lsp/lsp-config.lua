@@ -70,10 +70,12 @@ return {
     ---@type table<string, vim.lsp.Config>
     local servers = {
       -- php
-      -- intelephense = {},
-      phpactor = {
+      intelephense = {
         root_markers = { 'artisan', 'composer.json', 'laracord' },
       },
+      -- phpactor = {
+      --   root_markers = { 'artisan', 'composer.json', 'laracord' },
+      -- },
       laravel_ls = {
         root_markers = { 'artisan', 'composer.json', 'laracord' },
       },

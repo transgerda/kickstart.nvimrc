@@ -21,7 +21,7 @@ vim.cmd [[map K k]]
 vim.cmd [[map J j]]
 
 vim.api.nvim_set_keymap('n', '<leader>=', "<cmd>lua require('fzf-lua').files()<CR>", { noremap = true, silent = true })
-
+vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<CR>', { silent = true })
 -- commenting
 vim.keymap.set('n', '<C-c>', function() require('Comment.api').toggle.linewise.current() end, { desc = 'Toggle comment (line)' })
 

@@ -81,17 +81,25 @@ return {
       },
 
       -- html, css, json, yaml, etc.
-      -- biome = {},
-      -- tailwindcss = {},
-      -- superhtml = {
-      --   filetypes = { 'html', 'vue', 'blade' },
-      -- },
-      -- ts_ls = {
-      -- filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'vue' },
-      -- },
-
+      biome = {},
+      tailwindcss = {},
+      superhtml = {
+        filetypes = { 'html', 'vue', 'blade' },
+      },
+      ts_ls = {
+        filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'vue' },
+        init_options = {
+          plugins = {
+            {
+              name = '@vue/typescript-plugin',
+              location = vim.fn.expand '$HOME/.local/share/nvim/mason/packages/vue-language-server/node_modules/@vue/language-server',
+              languages = { 'vue' },
+            },
+          },
+        },
+      },
       -- acitvate html css and js in vue files
-      -- vue_ls = {},
+      vue_ls = {},
       -- volar = {},
 
       -- Special Lua Config, as recommended by neovim help docs

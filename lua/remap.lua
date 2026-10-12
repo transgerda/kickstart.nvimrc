@@ -35,3 +35,26 @@ end, { desc = 'Toggle comment (visual)' })
 -- Copy to system clipboard
 keymap('v', '<leader>y', '"+y')
 keymap('n', '<leader>y', '"+yy')
+
+local function toggle_diagnostic_display()
+  local config = vim.diagnostic.config()
+
+  if config.virtual_lines then
+    vim.diagnostic.config {
+      virtual_text = true,
+      virtual_lines = false,
+    }
+  else
+    vim.diagnostic.config {
+      virtual_text = false,
+      virtual_lines = true,
+    }
+  end
+end
+
+vim.keymap.set('n', '<leader>tl', toggle_diagnostic_display, {
+  desc = 'Toggle diagnostic display',
+})
+vim.keymap.set('v', '<leader>tl', toggle_diagnostic_display, {
+  desc = 'Toggle diagnostic display',
+})

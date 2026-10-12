@@ -106,6 +106,8 @@ return {
       -- lua
       stylua = {},
 
+      rust_analyzer = {},
+
       lua_ls = {
         on_init = function(client)
           if client.workspace_folders then
